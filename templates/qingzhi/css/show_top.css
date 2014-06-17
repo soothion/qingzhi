@@ -1,0 +1,40 @@
+body{background:url(../images/rs_bg.gif) repeat 0 0;}
+.show_top{background:url(../images/rs_top_bg.gif) repeat-x 0 0; width:100%; height:50px;}
+.show_top .show_top_c{width:1004px; margin:0 auto; overflow:hidden;}
+.show_top .show_top_c .logo{width:141px; height:48px; float:left;}
+.show_top .show_top_c .menu{padding-top:12px;width:560px; float:left;margin-left:50px;}
+.show_top .show_top_c .menu em{background:url(../images/rs_top_nav_li.gif) no-repeat 0 0; width:1px; height:29px; margin:0 15px; display:inline-block; vertical-align:top;}
+.show_top .show_top_c .menu a{color:#b8b8b8;display:inline-block;height:30px;font-size:14px;line-height:30px;}
+.show_top .show_top_c .menu a:hover{color:#fff; text-decoration:none;}
+.show_top .show_top_c .top_side {padding-top:15px;}
+.show_top .show_top_c .top_side span{height:17px; line-height:17px; padding:2px 0 2px 20px; margin-left:10px;}
+.show_top .show_top_c .top_side span.icon_login{ background:url(../images/rs_top_name.gif) no-repeat 0 0;}
+.show_top .show_top_c .top_side span.icon_reg{ background:url(../images/rs_top_logout.gif) no-repeat 0 0;}
+.show_top .show_top_c .top_side span.icon_logout{ background:url(../images/rs_top_logout.gif) no-repeat 0 0;}
+.show_top .show_top_c .top_side span.icon_help{ background:url(../images/rs_top_help.gif) no-repeat 0 0;}
+.show_top .show_top_c .top_side span a{color:#b8b8b8;}
+.show_top .show_top_c .top_side span a:hover{color:#fff;text-decoration:none;}
+
+.pm input#submit{background:url(../images/resume_pm_btn.gif) no-repeat 0 0; width:70px; height:34px;}
+.pm input#submit:hover{background:url(../images/resume_pm_btn_on.gif) no-repeat 0 0; width:70px; height:34px;}
+.pm textarea{
+	width:400px;
+	height:80px;
+	margin-bottom:10px;
+	padding:10px;
+	moz-transition: border 0.3s ease 0s, color 0.3s ease-out 0s;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+	background: #efefef;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-moz-border-radius:4px;
+	-o-border-radius:4px;
+	-webkit-border-radius:4px;
+	color: #999;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	outline-width: 0;
+}

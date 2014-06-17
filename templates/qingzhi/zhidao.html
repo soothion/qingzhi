@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<title>指导中心 | 青职网</title>
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" media="all" />
+<link href="{#$QISHI.site_template#}css/column.css" rel="stylesheet" media="all" />
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery-index.js"></script>
+<link rel="stylesheet" type="text/css" href="{#$QISHI.site_template#}images/ibanner/lrtk.css">
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/jquery.nivo.slider.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/cufon-yui.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/scripts.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/custom.js"></script>
+</head>
+<body id="top">
+<p id="back-to-top"><a href="#top"><span></span>返回顶部</a></p>
+{#include file="header.html"#}
+<div class="p_banner" style="background:#fefdfe;">
+  <div class="p_banner_c"><img src="{#$QISHI.site_template#}images/p_banner_zd.jpg" width="1004" height="123" /></div>
+</div>
+<div class="p_main">
+  <div class="zd_tit">
+    <h1 class="p_zd_tit">面试中心</h1>
+  </div>
+  <div class="p_main_zd">
+    <div class="p_main_m fl">
+      <div class="zd_m1">
+        <h2><a href="news/news-list.php?id=14" title="更多">职场吐槽</a></h2>
+        <ul>
+          {#qishi_news_list set="列表名:list,显示数目:5,资讯小类:14,标题长度15,填补字符:...,排序:addtime"#} 
+          <!--   以下为循环读取 --> 
+          {#foreach from=$list item=li#}
+          <li><a href="{#$li.url#}">{#$li.title#}</a><span>分享人：{#$li.author#}</span><em>{#$li.addtime|date_format:"%Y-%m-%d"#}</em></li>
+          {#/foreach#} 
+          <!-- 循环结束 -->
+        </ul>
+      </div>
+      <div class="zd_m2">
+        <h2><a href="news/news-list.php?id=15" title="更多">求职面试资料库</a></h2>
+        <ul>
+          {#qishi_news_list set="列表名:list,显示数目:5,资讯大类:15,标题长度10,填补字符:...,排序:addtime"#} 
+          <!--   以下为循环读取 --> 
+          {#foreach from=$list item=li#}
+          <li><a href="{#$li.url#}">{#$li.title#}</a><span>查看：{#$li.click#}</span><em>{#$li.addtime|date_format:"%Y-%m-%d"#}</em></li>
+          {#/foreach#} 
+          <!-- 循环结束 -->
+        </ul>
+      </div>
+    </div>
+    <div class="p_main_s fr">
+      <div class="zd_s1"><a href="{#$QISHI.site_dir#}user/personal/personal_tucao.php?act=make"></a></div>
+      <div class="zd_s2">
+        <h2><a href="news/news-list.php?id=16" title="更多">政策法规</a></h2>
+        <ul>
+          {#qishi_news_list set="列表名:list,显示数目:5,资讯大类:16,标题长度10,填补字符:...,排序:addtime"#} 
+          <!--   以下为循环读取 --> 
+          {#foreach from=$list item=li#}
+          <li><a href="{#$li.url#}">{#$li.title#}</a></li>
+          {#/foreach#} 
+          <!-- 循环结束 -->
+        </ul>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <script type="text/javascript">
+$(".zd_m1 li:eq(1)").addClass("libg");
+$(".zd_m1 li:eq(3)").addClass("libg");
+$(".zd_m2 li:eq(1)").addClass("libg");
+$(".zd_m2 li:eq(3)").addClass("libg");
+$(".zd_s2 li:eq(1)").addClass("libg");
+$(".zd_s2 li:eq(3)").addClass("libg");
+</script> 
+</div>
+{#include file="footer.html"#}
+</body>
+</html>

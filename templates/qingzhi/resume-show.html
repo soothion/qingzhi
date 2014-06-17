@@ -1,0 +1,202 @@
+{#qishi_resume_show set="列表名:show,简历ID:GET[id]"#}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<title>查看简历 | 青职网</title>
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" media="all" />
+<link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" media="all" />
+<link href="{#$QISHI.site_template#}css/show_top.css" rel="stylesheet" media="all" />
+<link href="{#$QISHI.site_template#}css/resume.css" rel="stylesheet" media="all" />
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery-index.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery-show.js"></script>
+<script type='text/javascript' src="{#$QISHI.site_template#}js/jquery.dialog.js" ></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+		var id="{#$show.id#}";
+		var tsTimeStamp= new Date().getTime();
+		$.get("{#$QISHI.site_dir#}plus/ajax_click.php", { "id": id,"time":tsTimeStamp,"act":"resume_click"},
+			function (data,textStatus)
+			 {			
+				$(".click").html(data);
+			 }
+		);
+		$.get("{#$QISHI.site_dir#}plus/ajax_contact.php", { "id": id,"time":tsTimeStamp,"act":"resume_contact"},
+			function (data,textStatus)
+			 {			
+				$("#resume_contact").html(data);
+				//下载简历
+				$("#download").click(function(){
+				var url="{#$QISHI.site_dir#}user/user_download_resume.php?id="+id+"&act=download&t="+tsTimeStamp;
+				dialog("下载简历","url:get?"+url,"500px","auto","");
+				});	
+				//邀请面试
+				$("#invited").click(function(){
+				var url="{#$QISHI.site_dir#}user/user_invited.php?id="+id+"&act=invited&t="+tsTimeStamp;
+				dialog("邀请面试","url:get?"+url,"500px","auto","");
+				});	
+				//添加都人才库
+				$(".add_resume_pool").click(function(){
+				var url="{#$QISHI.site_dir#}user/user_favorites_resume.php?id="+id+"&act=add&t="+tsTimeStamp;
+				dialog("添加到人才库","url:get?"+url,"500px","auto","");				
+				});	
+			 }
+		);
+	$("#newbuddy").click(function(){
+	dialog("加为好友","url:get?{#$QISHI.site_dir#}user/user_buddy.php?tuid={#$show.uid#}","350px","auto","");
+	});
+	$(".addpms").click(function(){
+	var url="{#$QISHI.site_dir#}user/user_pms.php?tuid={#$show.uid#}";
+	dialog("发送短消息","url:get?"+url,"400px","auto","");
+	});
+});
+</script>
+</head>
+
+</head>
+<body>
+{#include file="nav.html"#}
+<div class="rs_main">
+	<div class="tool">
+    	<a href="#"><em>{#$show.click#}</em> 次查看</a>|<a href="javascript:void(0);" class="add_resume_pool">加入人才库</a>|<a href="javascript:void(0);" id="download">下载</a>|<a onclick="javascript:window.opener=null;window.close();">关闭</a>
+    </div>
+    <div class="rs_main_l fl">
+    	<div class="a1">
+        	<div class="a1b1"><img src="{#$show.photosrc#}" width="248" height="248" /></div>
+            <div class="a1b2">
+            	<div class="name">{#$show.fullname#}</div>
+                <div class="con">
+                
+                	<div class="special_label" title="">
+                        {#foreach from="|"|explode:$show.tag item=tags key=key#}{#foreach from=","|explode:$tags item=tag key=tagkey#}{#if $tagkey==1#}<span class="l"></span>
+                        <span class="c">{#$tag#}</span>
+                        <span class="r"></span>{#/if#}{#/foreach#}{#/foreach#}	
+                    </div>
+                	<div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="a2" id="tab">
+        	<a href="javascript:;" class="nav_about_on" title="关于我"></a>
+            <a href="javascript:;" class="nav_will" title="求职意愿"></a>
+            <a href="javascript:;" class="nav_contact" title="联系我"></a>
+        </div>
+    </div>
+    <div class="rs_main_r fr">
+    	<div class="tabcon">
+    	<div class="part">
+    		<h2>/ 关于我</h2>
+            <div class="part_con">
+    			<p>{#$show.aboutme|nl2br#}</p>
+        		<ul class="about">
+            		<li><b>姓名：</b>{#$show.fullname#}</li>
+                	<li><b>性别：</b>{#$show.sex_cn#}</li>
+                	<li><b>年龄：</b>{#$show.age#}岁</li>
+                	<li><b>身高：</b>{#if $show.height=="0"#}未知{#else#}{#$show.height#}CM{#/if#}</li>
+                	<li><b>婚姻状况：</b>{#$show.marriage_cn#}</li>
+                	<li><b>户籍所在：</b>{#$show.householdaddress#}</li>
+                	<li><b>最高学历：</b>{#$show.education_cn#}</li>
+                	<li><b>工作经验：</b>{#$show.experience_cn#}</li>
+        		</ul>
+            	<div class="clear"></div>
+            </div>
+        </div>
+        
+        <div class="part">
+    		<h2>/ 技能及指数</h2>
+            <div class="part_con">
+    			<ul class="skills">
+			{#foreach from="|"|explode:$show.specialty item=tags key=key#}
+            <li>
+            {#foreach from=","|explode:$tags item=tag key=tagkey#}{#if $tagkey==0#}
+              <b>{#$tag#}</b>
+            {#/if#}
+            {#if $tagkey==1#}
+              <span class="star{#$tag#}"></span>
+            {#/if#}
+            {#/foreach#}
+            </li>
+          {#/foreach#}
+                	<div class="clear"></div>
+            	</ul>    
+            </div>	
+        </div>
+        
+        <div class="part">
+        	<h2>/ 工作经历</h2>
+            <div class="part_con">
+                {#foreach from=$show.work_list item=list#}
+                <div class="part_work">
+                	<p><b>{#$list.jobs#} - {#$list.companyname#}</b></p>
+                	<p><em>{#$list.start#} - {#$list.endtime#}</em></p>
+                	<p>{#$list.achievements#}</p>
+                </div>
+                {#/foreach#}
+            </div>
+        </div>
+        
+        <div class="part" id="edu">
+        	<h2>/ 教育经历</h2>
+            <div class="part_con">
+                {#foreach from=$show.education_list item=list#}
+                <div class="part_edu">
+                	<p><b>学科 - {#$list.school#}</b></p>
+                	<p><em>{#$list.start#} - {#$list.endtime#}</em></p>
+                </div>
+                {#/foreach#}
+            </div>
+        </div>
+    	</div>
+        
+        <div class="tabcon" style="display:none;">
+        	<div class="part" id="will">
+    			<h2>/ 求职意愿</h2>
+           		<div class="will">
+    				<p>
+        			{#$show.trade_cn#}/{#$show.intention_jobs#}
+        			</p>
+            	</div>
+        	</div>
+        </div>
+        
+        <div class="tabcon" style="display:none;">
+        	<div class="part">
+    		<h2>/ 联系我</h2>
+            <div class="part_con part_contact">
+    			<p><b>联系电话：</b>{#$show.telephone#}</p>
+                <p><b>联系地址：</b><strong>{#$show.address#}</strong></p>
+                <p><b>腾讯 QQ：</b>{#$show.qq#}</p>
+                <p><b>Email：</b>{#$show.email#}</p>
+                <p><b>个人网址：</b>{#$show.website#}</p>
+            </div>
+        </div>
+        <div class="part" id="pm">
+            <div class="part_con pm">
+                <p><input name="" id="submit" type="button" value="" class="addpms"/></p>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+   <div class="clear"></div> 
+</div>
+<script type="text/javascript">
+$(".skills li:eq(1)").addClass("no");
+$(".skills li:eq(3)").addClass("no");
+$(".skills li:eq(5)").addClass("no");
+$(".skills li:eq(7)").addClass("no");
+$(".skills li:eq(9)").addClass("no");
+$(".skills li:eq(11)").addClass("no");
+$(".part_work:last").addClass("pbno");
+$(".part_edu:last").addClass("pbno");
+$("#edu").addClass("nobt");
+$("#will").addClass("nobt");
+$("#work").addClass("nobt");
+$("#pm").addClass("nobt");
+</script> 
+{#include file="footer.html"#}
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{#$title#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
+<meta name="author" content="青职网" />
+<meta name="copyright" content="qingzhi.org" />
+<link href="{#$QISHI.site_template#}css/user.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" type="text/css" />
+<script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+$(".addpms").click(function(){
+	var url="{#$QISHI.site_dir#}user/user_pms.php?tuid="+$(this).attr('id');
+	dialog("发送短消息","url:get?"+url,"400px","auto","");
+	});
+
+});
+</script>
+</head>
+<body>
+{#include file="header.html"#}
+<div style="width:1004px;margin:10px auto 50px; min-height:500px;">
+<div class="page_location link_bk">
+当前位置：<a href="{#$QISHI.site_dir#}">首页</a>&nbsp;>&nbsp;<a href="{#$userindexurl#}">会员中心</a>&nbsp;>&nbsp;账户管理 &nbsp;>&nbsp;好友列表
+</div>
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:8px;" >
+  <tr>
+    <td width="183" valign="top" class="link_bk">
+	{#include file="member_personal/left.htm"#}
+	</td>
+    <td valign="top">
+	<div class="user_right_box">
+		<div class="user_right_top_tit_bg">		
+		  <h1>我的吐槽</h1>
+		</div>
+	{#if $tucao_list#}
+	 {#foreach from=$tucao_list item=list#}
+		<div class="us_list_no_content"><a href="?act=make&id={#$list.id#}">{#$list.title#}</a><span style="float:right;"><a href="?act=make&id={#$list.id#}">修改</a>&nbsp;&nbsp;<a href="?act=del_tucao&id={#$list.id#}">删除</a></span></div>
+ 	 {#/foreach#}
+ 	<div class="clear"></div>
+	{#else#}
+			<div class="us_list_no_content">您还没有吐槽...</div>
+			{#/if#}
+            <table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+              <tr>
+                <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+              </tr>
+            </table> 
+	  </div>
+    </td>
+  </tr>
+</table>
+</div>
+{#include file="footer.html"#}
+</body>
+</html>

@@ -1,0 +1,44 @@
+<div class="header">
+	<div class="top">
+    	<div class="top_con">
+        	<div class="fl">
+            	<ul id="twitter">
+                    {#qishi_news_list set="列表名:list,显示数目:10,资讯大类:12,标题长度10,填补字符:..."#}
+                    <!--   以下为循环读取 -->
+                        {#foreach from=$list item=li#}
+                        <li><a   href="{#$li.url#}">{#$li.title#}</a>
+                        </li>
+                        {#/foreach#}
+                     <!-- 循环结束 -->
+				</ul>
+            </div>
+            <div class="fr top_side">
+		{#include file="top-nav.htm"#}
+            </div>
+        </div>
+    </div>
+    <div class="con">
+    	<div class="con_c">
+    		<div class="logo fl"><a href="{#$QISHI.site_dir#}"><img src="{#$QISHI.site_template#}images/logo.gif" width="293" height="30" /></a></div>
+            <div class="qz_menu fr">
+		{#qishi_nav set="调用名称:QS_top,列表名:list"#}
+		{#foreach from=$list item=list#}
+		<a href="{#$list.url#}" target="{#$list.target#}" {#if $list.tag==$page_select && $list.tag!=""#}class="on"{#/if#}>{#$list.title#}</a>
+		{#/foreach#}
+            </div>	
+        </div>
+    </div>
+    <div class="search">
+    	<div class="search_c">
+        	<div class="fl search_hot">热门关键词：
+        {#qishi_hotword  set="显示数目:5,列表名:list"#}
+          <!--   以下为循环读取 -->
+            {#foreach from=$list item=li#}
+            <a href="{#$QISHI.site_dir#}search.php?key={#$li.w_word#}">{#$li.w_word#}</a>
+            {#/foreach#}
+         <!-- 循环结束 -->
+ </div>
+            <div class="fl search_input"><form id="searchForm" method="get" action="{#"QZ_search"|qishi_url#}"><input name="key"></form><a href="javascript:$('#searchForm').submit();"></a></div>
+        </div>
+    </div>  
+</div>

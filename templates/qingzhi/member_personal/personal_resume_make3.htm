@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{#$title#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
+<meta name="author" content="青职网" />
+<meta name="copyright" content="qingzhi.org" />
+<link href="{#$QISHI.site_template#}css/user.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" type="text/css" />
+<script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.idTabs.min.js" type='text/javascript' language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
+<script type="text/javascript">
+function jxtj(){
+    var str='<tr><td  height="38" align="left" width="340" style="padding-left:60px;" valign="top"><strong  style="color:#FF0000">*</strong>技能特长：<input name="title[]" value="" class="input_text_200">例如：摄影</td><td  height="38" align="left" valign="top"><strong  style="color:#FF0000">*</strong>技能等级：<select name="level[]" value=""><option value="1">一星</option><option value="2">二星</option><option value="3">三星</option><option value="4" selected="selected">四星</option><option value="5" selected="selected">五星</option><option value="6">六星</option><option value="7">七星</option></select></td></tr>';
+   $('#table1').append(str); 
+}
+$(document).ready(function()
+{
+	$("#tabshow li:nth-child(2)>a").addClass("selected");
+	//范例展开
+	$("#model1").click(function(){$("#ex1").toggle()});
+	$("#model2").click(function(){$("#ex2").toggle()});
+	//提交表单】
+	$("#submitsave").click(function(){
+	$('#Form1').submit();
+	})
+});
+
+</script>
+</head>
+<body>
+{#include file="header.html"#}
+<div style="width:1004px;margin:10px auto 50px; min-height:500px;">
+<div class="page_location link_bk">
+当前位置：<a href="{#$QISHI.site_dir#}">首页</a>&nbsp;>&nbsp;<a href="{#$userindexurl#}">会员中心</a>&nbsp;>&nbsp;创建简历&nbsp;>&nbsp;第三步 - 技能特长
+</div>
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:8px;" >
+  <tr>
+    <td width="183" valign="top" class="link_bk">
+	{#include file="member_personal/left.htm"#}
+	</td>
+    <td valign="top">
+	<div class="user_right_box">
+		<div class="user_right_top_tit_bg">		
+		  <h1>我的简历</h1>
+		</div>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+        <tr>
+          <td height="22" valign="top">
+		  <form id="Form1" name="Form1" method="post" action="?act=make3_save"  >
+		  <table width="100%" border="0" cellspacing="0" cellpadding="4" style=" line-height:180%;" id="table1">
+            <tr>
+              <td height="50" colspan="2" bgcolor="#F5FAFC" style=" border-bottom:1px #CCCCCC dashed; color:#003399">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:14px;">第三步 - 技能特长</span> <span style="color:#999999">(带<strong  style="color:#FF0000">*</strong>的为必填)</span></td>
+              </tr>
+			  <tr>
+              <td width="100" height="10"></td>
+              <td></td>
+            </tr>
+          {#foreach from="|"|explode:$resume_basic.specialty item=tags key=key#}
+            <tr>
+            {#foreach from=","|explode:$tags item=tag key=tagkey#}{#if $tagkey==0&&$tag!=''#}
+              <td height="38" align="let" valign="top" width="340" style="padding-left:60px;"><strong style="color:#FF0000">*</strong>技能特长：<input name="title[]" class="input_text_200" value="{#$tag#}"></td>
+            {#/if#}
+            {#if $tagkey==1&&$tag!=''#}
+              <td height="38" align="let" valign="top"><strong  style="color:#FF0000">*</strong>技能等级：<select name="level[]" value="{#$tag#}"><option value="1" {#if $tag==1#}selected="selected"{#/if#}>一星</option><option value="2" {#if $tag==2#}selected="selected"{#/if#}>二星</option><option value="3" {#if $tag==3#}selected="selected"{#/if#}>三星</option><option value="4" {#if $tag==4#}selected="selected"{#/if#}>四星</option><option value="5" {#if $tag==5#}selected="selected"{#/if#}>五星</option><option value="6" {#if $tag==6#}selected="selected"{#/if#}>六星</option><option value="7" {#if $tag==7#}selected="selected"{#/if#}>七星</option></select></td>
+            {#/if#}
+            {#/foreach#}
+            </tr>
+          {#/foreach#}
+			<input name="pid" type="hidden" id="pid" value="{#$pid#}" />
+			 <input name="go_resume_show" type="hidden" value="{#$go_resume_show#}" />
+			 </table>
+			  </form>
+			<table width="100%" border="0" cellspacing="0" cellpadding="4" style="margin-bottom:150px; line-height:180%;" >
+            <tr>
+              <td height="60" align="center" style="border-top:1px #ACC9D0 dashed;">
+			   <input type="button"  value="添加技能"  class="user_submit" onclick="jxtj();"/>
+			   {#if $go_resume_show#}
+			  <input type="submit" name="submitsave" id="submitsave" value="保存"  class="user_submit"/>
+			   &nbsp;&nbsp;
+			   <input type="button" name="next" value="返回"  class="user_submit" onclick="window.location='?act=resume_show&pid={#$pid#}'"/>
+		
+			  {#else#}
+			  <input type="submit" name="submitsave" id="submitsave" value="保存并跳到下一步"  class="user_long_submit"/>&nbsp;&nbsp;
+			   <input type="button" name="next" value="返回上一步"  class="user_submit" onclick="window.location='?act=make2&pid={#$pid#}'"/>
+			  {#/if#}
+			  </td>
+            </tr>
+          </table>
+	 
+		  </td>
+          <td width="150" valign="top" class="resume_right_box" >
+		 {#include file="member_personal/personal_right.htm"#} 
+		  </td>
+        </tr>
+      </table>
+         
+		  </div>
+    </td>
+  </tr>
+</table>
+</div>
+{#include file="footer.html"#}
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<title>{#$show.title#} | 青职网</title>
+<link href="{#$QISHI.site_template#}css/global.css" rel="stylesheet" media="all" />
+<link href="{#$QISHI.site_template#}css/column.css" rel="stylesheet" media="all" />
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}js/jquery-index.js"></script>
+<script type="text/javascript">   
+    function doPrint() {    
+        bdhtml=window.document.body.innerHTML;    
+        sprnstr="<!--startprint-->";    
+        eprnstr="<!--endprint-->";    
+        prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17);    
+        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));    
+        window.document.body.innerHTML=prnhtml; 
+        window.print();    
+		location.reload();
+}    
+</script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+		var id="{#$smarty.get.id#}";
+		var tsTimeStamp= new Date().getTime();
+		$.get("{#$QISHI.site_dir#}plus/ajax_click.php", { "id": id,"time":tsTimeStamp,"act":"news_click"},
+			function (data,textStatus)
+			 {			
+				$("#click").html(data);
+			 }
+		);
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{#$QISHI.site_template#}images/ibanner/lrtk.css">
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/jquery.nivo.slider.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/cufon-yui.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/scripts.js"></script>
+<script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/custom.js"></script>
+</head>
+<body id="top">
+<p id="back-to-top"><a href="#top"><span></span>返回顶部</a></p>
+{#include file="header.html"#}
+{#qishi_news_show set="列表名:show,资讯ID:GET[id]"#}
+<div class="p_banner" style="background:#fefdfe;">
+  <div class="p_banner_c"><img src="{#$QISHI.site_template#}images/p_banner_zd.jpg" width="1004" height="123" /></div>
+</div>
+<div class="p_main">
+  <div class="zd_tit">
+    <h1>指导中心</h1>
+    <span>{#qishi_news_category set="列表名:pcat,名称长度:10,资讯小类:"|cat:$show.parentid#}
+    {#qishi_news_category set="列表名:scat,名称长度:10,资讯小类:"|cat:$show.type_id#}
+    当前位置：<a href="{#$QISHI.site_dir#}">首页</a> > <a href="{#"QZ_zhidao"|qishi_url#}">指导中心</a>{#if $pcat#}><a href="{#$pcat.url#}">{#$pcat.title_#}</a>{#/if#}
+     > <a href="{#$scat.url#}">{#$scat.title_#}</a> > 正文</span>
+    <div class="clear"></div>
+  </div>
+  <div class="p_main_art">
+    <div class="p_art_show fl">
+      <div class="p_art_show_con">
+        <div class="tit">
+          <h1>{#$show.title#}</h1>
+          <p>发布时间：{#$show.addtime|date_format:"%Y-%m-%d"#}　　查看次数：{#$show.click#}　　<a href="javascript:doPrint();" target="_blank">打印</a>　　<a href="javascript:;" onclick="window.external.addFavorite(parent.location.href,document.title);">收藏</a>　　<a href="javascript:;" onClick="javascript:history.back(-1);">返回</a></p>
+        </div>
+        <div class="con"><!--startprint--> {#$show.content#}<!--endprint--> </div>
+      </div>
+    </div>
+    <div class="p_art_list_side fr"> {#qishi_news_category set="列表名:category,名称长度:10,资讯大类:"|cat:$show.parentid"#}
+	{#if $pcat#}
+      <div class="art_s1">
+        <div class="tit"> <a href="{#$pcat.url#}">{#$pcat.title_#}</a></div>
+        <ul>
+          {#foreach from=$category item=list#}
+          <li><a href="{#$list.url#}">{#$list.title#}</a></li>
+          {#/foreach#}
+        </ul>
+      </div>
+	  {#/if#}
+      <div class="art_s2"><a href="{#$QISHI.site_dir#}user/personal/personal_tucao.php?act=make"></a></div>
+      <div class="art_s3"><a href="#"></a></div>
+      <div class="art_s4">
+        <h3>青职相关</h3>
+        <div class="con">
+          <p>新手上路：<a href="#">教你如何快速找到工作</a></p>
+          <p>关注青职：<a href="#" class="sina"></a><a href="#" class="douban"></a></p>
+          <p>服务热线：0898-88888888</p>
+          <div class="side_book"><a href="#"></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+{#include file="footer.html"#}
+</body>
+</html>

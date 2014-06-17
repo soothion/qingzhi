@@ -1,0 +1,60 @@
+.rs_main{width:904px; margin:0 auto; padding-bottom:40px;}
+.rs_main .tool{ width:900px; text-align:right; color:#e3e3e3; margin:40px 0 50px 0;display:inline-block; vertical-align:top; height:30px;}
+.rs_main .tool em{color:#88a564;}
+.rs_main .tool a{margin:20px; color:#e3e3e3;}
+.rs_main .tool a:hover{color:#fff; text-decoration:none;}
+
+.rs_main .rs_main_l{width:248px;}
+.rs_main .rs_main_l .a1{background:#88a564; width:248px;border-radius:6px;}
+.a1 .a1b1{width:248px; height:248px;}
+.a1 .a1b2{padding:10px;}
+.a1 .a1b2 .name{background:url(../images/rs_name_big.gif) no-repeat 0 0;font-size:20px; font-weight:bold; color:#fff; padding:0 0 4px 30px;}
+.a1 .a1b2 .con{ margin-top:10px;}
+.a1 .a1b2 .con .special_label{cursor:default;margin:0 6px 10px 0;margin:0 8px 10px 0\9;height:30px;vertical-align:top; display:block;*word-spacing:normal; float:left;white-space:nowrap; line-height:25px;}
+.special_label span{height:28px;}
+.special_label span.l{width:8px;background:url(../images/rs_labell.gif) no-repeat 0 0;display:inline-block; vertical-align:top;}
+.special_label span.c{background:url(../images/rs_labelc.gif) repeat-x 0 0;white-space:nowrap;display:inline-block; vertical-align:top; margin:0 -4px; margin:0 -6px\9;color:#7b7b7b; padding:0 8px 0 4px;}
+.special_label span.r{width:15px; background:url(../images/rs_labelr.gif) no-repeat 0 0; display:inline-block; vertical-align:top;}
+
+.rs_main .rs_main_l .a2{width:248px; margin-top:10px;}
+.rs_main .rs_main_l .a2 a{width:248px; height:40px; display:block; margin-bottom:10px;}
+.rs_main .rs_main_l .a2 a.nav_about{background:url(../images/rs_about.gif) no-repeat 0 0;}
+.rs_main .rs_main_l .a2 a.nav_about_on{background:url(../images/rs_about_on.gif) no-repeat 0 0;}
+.rs_main .rs_main_l .a2 a.nav_will{background:url(../images/rs_will.gif) no-repeat 0 0;}
+.rs_main .rs_main_l .a2 a.nav_will_on{background:url(../images/rs_will_on.gif) no-repeat 0 0;}
+.rs_main .rs_main_l .a2 a.nav_works{background:url(../images/rs_works.gif) no-repeat 0 0;}
+.rs_main .rs_main_l .a2 a.nav_works_on{background:url(../images/rs_works_on.gif) no-repeat 0 0;}
+.rs_main .rs_main_l .a2 a.nav_contact{background:url(../images/rs_contact.gif) no-repeat 0 0;}
+.rs_main .rs_main_l .a2 a.nav_contact_on{background:url(../images/rs_contact_on.gif) no-repeat 0 0;}
+
+
+.rs_main .rs_main_r{width:590px;border-radius:6px; padding-bottom:40px; background:#fff; padding:0 20px 15px 20px; line-height:26px; padding-bottom:50px;}
+
+.rs_main .rs_main_r .part{width:590px; color:#969696; border-bottom:1px dashed #ddd; padding:10px 0 20px 0;}
+.rs_main .rs_main_r .part h2{color:#88a564; font-size:14px; font-weight:bold; padding-bottom:5px;}
+
+.rs_main .rs_main_r .part_con{ padding:4px 10px 0; overflow:hidden;}
+.rs_main .rs_main_r .part .part_con ul.about{width:450px; margin-top:20px;}
+ul.about li{width:146px; height:29px;background:url(../images/rs_data_bg.gif) no-repeat 0 0; float:left; margin-right:20px; display:block; margin-bottom:10px; padding-left:15px; color:#6f6f6f;}
+
+.rs_main .rs_main_r .part .part_con ul.skills{width:590px;;margin-left:-40px;}
+ul.skills li{line-height:30px; border-right:1px solid #e0e2e5; width:250px; float:left; margin-left:40px; color:#6f6f6f;}
+ul.skills li b{width:100px; height:30px; display:inline-block; vertical-align:top;font-weight:normal;}
+ul.skills li span{width:130px; height:19px; display:inline-block; margin-left:10px;}
+ul.skills li.no{border:none;}
+ul.skills li span.star1{background:url(../images/rs_star1.gif) no-repeat 0 5px;}
+ul.skills li span.star2{background:url(../images/rs_star2.gif) no-repeat 0 5px;}
+ul.skills li span.star3{background:url(../images/rs_star3.gif) no-repeat 0 5px;}
+ul.skills li span.star4{background:url(../images/rs_star4.gif) no-repeat 0 5px;}
+ul.skills li span.star5{background:url(../images/rs_star5.gif) no-repeat 0 5px;}
+ul.skills li span.star6{background:url(../images/rs_star6.gif) no-repeat 0 5px;}
+ul.skills li span.star7{background:url(../images/rs_star7.gif) no-repeat 0 5px;}
+
+.rs_main .rs_main_r .part .part_work,.rs_main .rs_main_r .part .part_edu{padding-bottom:20px;}
+.rs_main .rs_main_r .part .pbno{padding-bottom:0;}
+.rs_main .rs_main_r .part .part_work b,.rs_main .rs_main_r .part .part_edu b{color:#6f6f6f;}
+.rs_main .rs_main_r .part .part_work,.rs_main .rs_main_r .part .part_edu b p{ color:#969696;}
+
+.will{padding:4px 10px 0;}
+.rs_main .rs_main_r .nobt{border:none;}
+.part_contact{color:#6f6f6f;}
