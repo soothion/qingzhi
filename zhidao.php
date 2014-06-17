@@ -11,7 +11,7 @@
 */
 define('IN_QISHI', true);
 $alias="QZ_zhidao";
-require_once('D:/PHPnow/htdocs/include/common.inc.php');
+require_once('include/common.inc.php');
 if($mypage['caching']>0){
         $smarty->cache =true;
 		$smarty->cache_lifetime=$mypage['caching'];
