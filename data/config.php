@@ -2,7 +2,7 @@
 $dbhost   = "localhost";
 $dbname   = "qingzhi";
 $dbuser   = "root";
-$dbpass   = "doraprince";
+$dbpass   = "";
 $pre    = "qs_";
 $QS_cookiedomain = '';
 $QS_cookiepath =  "/";

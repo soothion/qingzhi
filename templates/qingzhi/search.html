@@ -56,7 +56,23 @@ function option(){
   }
 
 </script>
-    <script type="text/javascript"> 
+    
+<script type="text/javascript"> 
+$(document).ready(function(){ 
+$(".companytype").change(function(){ 
+    $(".companytype option").each(function(i,o){ 
+        if($(this).attr("selected")) 
+        { 
+            $(".trade").hide(); 
+            $(".trade").eq(i).show(); 
+        } 
+    }); 
+}); 
+$(".companytype").val({#$smarty.get.companytype#}).change(); 
+}); 
+</script>
+    
+<script type="text/javascript"> 
 $(document).ready(function()
 {
     jobslist();
@@ -77,6 +93,8 @@ $(document).ready(function()
   });
 });
 </script>
+    
+    
 <link rel="stylesheet" type="text/css" href="{#$QISHI.site_template#}images/ibanner/lrtk.css">
 <script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="{#$QISHI.site_template#}images/ibanner/jquery.nivo.slider.js"></script>
@@ -115,24 +133,29 @@ $(document).ready(function()
                     </div>
                     <div class="s2">
                         <div class="tit">企业类型：</div>
-                        <select name="companytype"  onchange="javascript:$('#Form1').submit();"  class="select">
+                        <select name="companytype"  class="select companytype">
                             <option value="">请选择</option>
-                            {#qishi_get_classify set="列表名:category,类型:QS_company_type"#}
-                      {#foreach from=$category item=list#}
-                            <option value="{#$list.id#}" {#if $list.id==$smarty.get.companytype#} selected="selected"{#/if#}>{#$list.categoryname#}</option>
-                            {#/foreach#}
-                        </select>
+                            <?php 
+                                $menu=include('menu.php');
+                                foreach($menu as $company){
+                            ?>
+                            <option value="<?php echo $company['id']?>" {#if $company.id==$smarty.get.companytype#} selected="selected"{#/if#}><?php echo $company['title']?></option>
+                            <?php }?>
+                        </select>                  
                         <div class="clear"></div>
                     </div>
                     <div class="s2">
                         <div class="tit">行业类别：</div>
-                        <select name="trade"  onchange="javascript:$('#Form1').submit();"  class="select">
+                        <select name="trade"  onchange="javascript:$('#Form1').submit();"  class="select trade">
                             <option value="">请选择</option>
-                            {#qishi_get_classify set="列表名:category,类型:QS_trade"#}
-                      {#foreach from=$category item=list#}
-                            <option value="{#$list.id#}" {#if $list.id==$smarty.get.trade#} selected="selected"{#/if#}>{#$list.categoryname#}</option>
-                            {#/foreach#}
                         </select>
+                        <?php foreach($menu as $company){?>
+                        <select name="trade"  onchange="javascript:$('#Form1').submit();" class="select trade">
+                            <?php foreach($company['trade'] as $trade){?>
+                            <option value="<?php echo $trade['id']?>" {#if $trade.id==$smarty.get.trade#} selected="selected"{#/if#}><?php echo $trade['title']?></option>
+                            <?php }?>
+                        </select>
+                        <?php }?>
                         <div class="clear"></div>
                     </div>
                     <div class="s2">

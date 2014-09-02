@@ -1,4 +1,4 @@
-<?php /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2013-10-12 16:03 中国标准时间 */ ?>
+<?php /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-02 21:07 ?D1ú±ê×?ê±?? */ ?>
 
 <script type="text/javascript">
 //顶部部登录

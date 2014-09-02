@@ -1,4 +1,4 @@
-<?php require_once('D:\PHPnow\htdocs\include\template_lite\plugins\modifier.default.php'); $this->register_modifier("default", "tpl_modifier_default",false);  require_once('D:\PHPnow\htdocs\include\template_lite\plugins\modifier.date_format.php'); $this->register_modifier("date_format", "tpl_modifier_date_format",false);  require_once('D:\PHPnow\htdocs\include\template_lite\plugins\function.qishi_get_classify.php'); $this->register_function("qishi_get_classify", "tpl_function_qishi_get_classify",false);  require_once('D:\PHPnow\htdocs\include\template_lite\plugins\function.qishi_jobs_list.php'); $this->register_function("qishi_jobs_list", "tpl_function_qishi_jobs_list",false);  /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2013-11-14 18:46 中国标准时间 */ ?>
+<?php require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\modifier.default.php'); $this->register_modifier("default", "tpl_modifier_default",false);  require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\modifier.date_format.php'); $this->register_modifier("date_format", "tpl_modifier_date_format",false);  require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\function.qishi_get_classify.php'); $this->register_function("qishi_get_classify", "tpl_function_qishi_get_classify",false);  require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\function.qishi_jobs_list.php'); $this->register_function("qishi_jobs_list", "tpl_function_qishi_jobs_list",false);  /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-02 23:44 ?D1ú±ê×?ê±?? */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -72,7 +72,24 @@ function option(){
   }
 
 </script>
-    <script type="text/javascript"> 
+    
+<script type="text/javascript"> 
+$(document).ready(function(){ 
+$(".companytype").change(function(){ 
+    $(".companytype option").each(function(i,o){ 
+        if($(this).attr("selected")) 
+        { 
+            $(".trade").hide(); 
+            $(".trade").eq(i).show(); 
+        } 
+    }); 
+}); 
+$(".companytype").val(<?php echo $_GET['companytype']; ?>
+).change(); 
+}); 
+</script>
+    
+<script type="text/javascript"> 
 $(document).ready(function()
 {
     jobslist();
@@ -97,6 +114,8 @@ $(document).ready(function()
   });
 });
 </script>
+    
+    
 <link rel="stylesheet" type="text/css" href="<?php echo $this->_vars['QISHI']['site_template']; ?>
 images/ibanner/lrtk.css">
 <script type="text/javascript" src="<?php echo $this->_vars['QISHI']['site_template']; ?>
@@ -152,28 +171,29 @@ images/p_banner_zy.jpg" width="1004" height="123" />
                     </div>
                     <div class="s2">
                         <div class="tit">企业类型：</div>
-                        <select name="companytype"  onchange="javascript:$('#Form1').submit();"  class="select">
+                        <select name="companytype"  class="select companytype">
                             <option value="">请选择</option>
-                            <?php echo tpl_function_qishi_get_classify(array('set' => "列表名:category,类型:QS_company_type"), $this);?>
-                      <?php if (count((array)$this->_vars['category'])): foreach ((array)$this->_vars['category'] as $this->_vars['list']): ?>
-                            <option value="<?php echo $this->_vars['list']['id']; ?>
-" <?php if ($this->_vars['list']['id'] == $_GET['companytype']): ?> selected="selected"<?php endif; ?>><?php echo $this->_vars['list']['categoryname']; ?>
-</option>
-                            <?php endforeach; endif; ?>
-                        </select>
+                            <?php 
+                                $menu=include('menu.php');
+                                foreach($menu as $company){
+                            ?>
+                            <option value="<?php echo $company['id']?>" <?php if ($this->_vars['company']['id'] == $_GET['companytype']): ?> selected="selected"<?php endif; ?>><?php echo $company['title']?></option>
+                            <?php }?>
+                        </select>                  
                         <div class="clear"></div>
                     </div>
                     <div class="s2">
                         <div class="tit">行业类别：</div>
-                        <select name="trade"  onchange="javascript:$('#Form1').submit();"  class="select">
+                        <select name="trade"  onchange="javascript:$('#Form1').submit();"  class="select trade">
                             <option value="">请选择</option>
-                            <?php echo tpl_function_qishi_get_classify(array('set' => "列表名:category,类型:QS_trade"), $this);?>
-                      <?php if (count((array)$this->_vars['category'])): foreach ((array)$this->_vars['category'] as $this->_vars['list']): ?>
-                            <option value="<?php echo $this->_vars['list']['id']; ?>
-" <?php if ($this->_vars['list']['id'] == $_GET['trade']): ?> selected="selected"<?php endif; ?>><?php echo $this->_vars['list']['categoryname']; ?>
-</option>
-                            <?php endforeach; endif; ?>
                         </select>
+                        <?php foreach($menu as $company){?>
+                        <select name="trade"  onchange="javascript:$('#Form1').submit();" class="select trade">
+                            <?php foreach($company['trade'] as $trade){?>
+                            <option value="<?php echo $trade['id']?>" <?php if ($this->_vars['trade']['id'] == $_GET['trade']): ?> selected="selected"<?php endif; ?>><?php echo $trade['title']?></option>
+                            <?php }?>
+                        </select>
+                        <?php }?>
                         <div class="clear"></div>
                     </div>
                     <div class="s2">

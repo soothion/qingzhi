@@ -1,4 +1,4 @@
-<?php require_once('D:\PHPnow\htdocs\include\template_lite\plugins\modifier.qishi_url.php'); $this->register_modifier("qishi_url", "tpl_modifier_qishi_url",false);  /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2013-11-13 00:04 中国标准时间 */ ?>
+<?php require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\modifier.qishi_url.php'); $this->register_modifier("qishi_url", "tpl_modifier_qishi_url",false);  /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-02 21:15 ?D1ú±ê×?ê±?? */ ?>
 <div class="show_top">
 	<div class="show_top_c">
     	<div class="logo"><a href="#"><img src="<?php echo $this->_vars['QISHI']['site_template']; ?>
