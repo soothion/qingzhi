@@ -1,4 +1,4 @@
-<?php /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-02 21:07 ?D1迆㊣那℅?那㊣?? */ ?>
+<?php /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-03 09:30 ?D1迆㊣那℅?那㊣?? */ ?>
 
 <script type="text/javascript">
 //階窒窒腎翹

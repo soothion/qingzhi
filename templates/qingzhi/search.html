@@ -28,7 +28,7 @@ function resetForm(){
 
 function option(){
     var key='{#$smarty.get.key#}';
-	var companytype='{#$smarty.get.companytype#}';
+    var companytype='{#$smarty.get.companytype#}';
     var trade='{#$smarty.get.trade#}';
     var jobs='{#$smarty.get.jobs#}';
     var wage='{#$smarty.get.wage#}';
@@ -54,21 +54,19 @@ function option(){
     }
 
   }
-
+ 
 </script>
+
+    
     
 <script type="text/javascript"> 
 $(document).ready(function(){ 
-$(".companytype").change(function(){ 
-    $(".companytype option").each(function(i,o){ 
-        if($(this).attr("selected")) 
-        { 
-            $(".trade").hide(); 
-            $(".trade").eq(i).show(); 
-        } 
-    }); 
-}); 
-$(".companytype").val({#$smarty.get.companytype#}).change(); 
+    $('.companytype').change(function(){
+        $('.trade .option').hide();
+        var id=$('.companytype').val();
+        $('.trade .option'+id).show();
+    });
+    $('.companytype').change();
 }); 
 </script>
     
@@ -118,11 +116,6 @@ $(document).ready(function()
             <h1>职位搜索</h1>
             <div class="p_search_con">
                 <form id="Form1" method="get">
-				<input type="hidden" name="sort" value="{#$smarty.get.sort#}"/>
-					 <input type="hidden" name="companytype" value="{#$smarty.get.companytype#}"/>
-                    <input type="hidden" name="pagesize" value="{#$smarty.get.pagesize#}"/>
-                    <input type="hidden" name="recommend" value="{#$smarty.get.recommend#}"/>
-                    <input type="hidden" name="emergency" value="{#$smarty.get.emergency#}"/>
                     <div class="s1">
                         <div class="tit">关键字：</div>
                         <div class="input">
@@ -139,7 +132,7 @@ $(document).ready(function()
                                 $menu=include('menu.php');
                                 foreach($menu as $company){
                             ?>
-                            <option value="<?php echo $company['id']?>" {#if $company.id==$smarty.get.companytype#} selected="selected"{#/if#}><?php echo $company['title']?></option>
+                            <option value="<?php echo $company['id']?>" <?php if($company['id']==$_GET['companytype']) echo 'selected';?> ><?php echo $company['title']?></option>
                             <?php }?>
                         </select>                  
                         <div class="clear"></div>
@@ -148,14 +141,12 @@ $(document).ready(function()
                         <div class="tit">行业类别：</div>
                         <select name="trade"  onchange="javascript:$('#Form1').submit();"  class="select trade">
                             <option value="">请选择</option>
-                        </select>
-                        <?php foreach($menu as $company){?>
-                        <select name="trade"  onchange="javascript:$('#Form1').submit();" class="select trade">
-                            <?php foreach($company['trade'] as $trade){?>
-                            <option value="<?php echo $trade['id']?>" {#if $trade.id==$smarty.get.trade#} selected="selected"{#/if#}><?php echo $trade['title']?></option>
+                            <?php foreach($menu as $company){?>
+                                <?php foreach($company['trade'] as $trade){?>
+                                <option class="option option<?php echo $company['id']?>" value="<?php echo $trade['id']?>" <?php if($trade['id']==$_GET['trade']) echo 'selected';?> ><?php echo $trade['title']?></option>
+                                <?php }?>
                             <?php }?>
                         </select>
-                        <?php }?>
                         <div class="clear"></div>
                     </div>
                     <div class="s2">

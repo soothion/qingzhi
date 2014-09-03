@@ -1,4 +1,4 @@
-<?php require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\modifier.qishi_url.php'); $this->register_modifier("qishi_url", "tpl_modifier_qishi_url",false);  /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-02 21:07 ?D1迆㊣那℅?那㊣?? */ ?>
+<?php require_once('E:\wamp\www\qingzhi\include\template_lite\plugins\modifier.qishi_url.php'); $this->register_modifier("qishi_url", "tpl_modifier_qishi_url",false);  /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-03 09:30 ?D1迆㊣那℅?那㊣?? */ ?>
 <div class="qz_footer">
   <div class="footer_c">
     <div class="fl"><a href="<?php echo $this->_run_modifier("QZ_index", 'qishi_url', 'plugin', 1); ?>

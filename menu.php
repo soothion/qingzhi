@@ -7,19 +7,19 @@ return array(
         'trade'=>array(
             array(
                 'id'=>1,
-                'title'=>'ç”µå­å•†åŠ¡'
+                'title'=>'µç×ÓÉÌÎñ'
             ),
             array(
                 'id'=>2,
-                'title'=>'æ•™è‚²åŸ¹è®­'
+                'title'=>'½ÌÓýÅàÑµ'
             ),
             array(
                 'id'=>3,
-                'title'=>'ç”Ÿç‰©æŠ€æœ¯'
+                'title'=>'ÉúÎï¼¼Êõ'
             ),
             array(
                 'id'=>4,
-                'title'=>'é€šè®¯æ•°ç '
+                'title'=>'Í¨Ñ¶ÊýÂë'
             )
         )
     ),
@@ -29,19 +29,19 @@ return array(
     'trade'=>array(
             array(
                 'id'=>5,
-                'title'=>'çƒŸè‰'
+                'title'=>'ÑÌ²Ý'
             ),
             array(
                 'id'=>6,
-                'title'=>'é“è·¯'
+                'title'=>'ÌúÂ·'
             ),
             array(
                 'id'=>7,
-                'title'=>'å»ºç­‘'
+                'title'=>'½¨Öþ'
             ),
             array(
                 'id'=>8,
-                'title'=>'é“¶è¡Œ'
+                'title'=>'ÒøÐÐ'
             )
         )
     )

@@ -1,4 +1,4 @@
-<?php require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\modifier.default.php'); $this->register_modifier("default", "tpl_modifier_default",false);  require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\modifier.date_format.php'); $this->register_modifier("date_format", "tpl_modifier_date_format",false);  require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\function.qishi_get_classify.php'); $this->register_function("qishi_get_classify", "tpl_function_qishi_get_classify",false);  require_once('D:\wamp\www\qingzhi\include\template_lite\plugins\function.qishi_jobs_list.php'); $this->register_function("qishi_jobs_list", "tpl_function_qishi_jobs_list",false);  /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-02 23:44 ?D1ú±ê×?ê±?? */ ?>
+<?php require_once('E:\wamp\www\qingzhi\include\template_lite\plugins\modifier.default.php'); $this->register_modifier("default", "tpl_modifier_default",false);  require_once('E:\wamp\www\qingzhi\include\template_lite\plugins\modifier.date_format.php'); $this->register_modifier("date_format", "tpl_modifier_date_format",false);  require_once('E:\wamp\www\qingzhi\include\template_lite\plugins\function.qishi_get_classify.php'); $this->register_function("qishi_get_classify", "tpl_function_qishi_get_classify",false);  require_once('E:\wamp\www\qingzhi\include\template_lite\plugins\function.qishi_jobs_list.php'); $this->register_function("qishi_jobs_list", "tpl_function_qishi_jobs_list",false);  /* V2.10 Template Lite 4 January 2007  (c) 2005-2007 Mark Dickenson. All rights reserved. Released LGPL. 2014-09-03 11:12 ?D1ú±ê×?ê±?? */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,7 +37,7 @@ function resetForm(){
 function option(){
     var key='<?php echo $_GET['key']; ?>
 ';
-	var companytype='<?php echo $_GET['companytype']; ?>
+    var companytype='<?php echo $_GET['companytype']; ?>
 ';
     var trade='<?php echo $_GET['trade']; ?>
 ';
@@ -70,22 +70,19 @@ function option(){
     }
 
   }
-
+ 
 </script>
+
+    
     
 <script type="text/javascript"> 
 $(document).ready(function(){ 
-$(".companytype").change(function(){ 
-    $(".companytype option").each(function(i,o){ 
-        if($(this).attr("selected")) 
-        { 
-            $(".trade").hide(); 
-            $(".trade").eq(i).show(); 
-        } 
-    }); 
-}); 
-$(".companytype").val(<?php echo $_GET['companytype']; ?>
-).change(); 
+    $('.companytype').change(function(){
+        $('.trade .option').hide();
+        var id=$('.companytype').val();
+        $('.trade .option'+id).show();
+    });
+    $('.companytype').change();
 }); 
 </script>
     
@@ -150,16 +147,6 @@ images/p_banner_zy.jpg" width="1004" height="123" />
             <h1>职位搜索</h1>
             <div class="p_search_con">
                 <form id="Form1" method="get">
-				<input type="hidden" name="sort" value="<?php echo $_GET['sort']; ?>
-"/>
-					 <input type="hidden" name="companytype" value="<?php echo $_GET['companytype']; ?>
-"/>
-                    <input type="hidden" name="pagesize" value="<?php echo $_GET['pagesize']; ?>
-"/>
-                    <input type="hidden" name="recommend" value="<?php echo $_GET['recommend']; ?>
-"/>
-                    <input type="hidden" name="emergency" value="<?php echo $_GET['emergency']; ?>
-"/>
                     <div class="s1">
                         <div class="tit">关键字：</div>
                         <div class="input">
@@ -177,7 +164,7 @@ images/p_banner_zy.jpg" width="1004" height="123" />
                                 $menu=include('menu.php');
                                 foreach($menu as $company){
                             ?>
-                            <option value="<?php echo $company['id']?>" <?php if ($this->_vars['company']['id'] == $_GET['companytype']): ?> selected="selected"<?php endif; ?>><?php echo $company['title']?></option>
+                            <option value="<?php echo $company['id']?>" <?php if($company['id']==$_GET['companytype']) echo 'selected';?> ><?php echo $company['title']?></option>
                             <?php }?>
                         </select>                  
                         <div class="clear"></div>
@@ -186,14 +173,12 @@ images/p_banner_zy.jpg" width="1004" height="123" />
                         <div class="tit">行业类别：</div>
                         <select name="trade"  onchange="javascript:$('#Form1').submit();"  class="select trade">
                             <option value="">请选择</option>
-                        </select>
-                        <?php foreach($menu as $company){?>
-                        <select name="trade"  onchange="javascript:$('#Form1').submit();" class="select trade">
-                            <?php foreach($company['trade'] as $trade){?>
-                            <option value="<?php echo $trade['id']?>" <?php if ($this->_vars['trade']['id'] == $_GET['trade']): ?> selected="selected"<?php endif; ?>><?php echo $trade['title']?></option>
+                            <?php foreach($menu as $company){?>
+                                <?php foreach($company['trade'] as $trade){?>
+                                <option class="option option<?php echo $company['id']?>" value="<?php echo $trade['id']?>" <?php if($trade['id']==$_GET['trade']) echo 'selected';?> ><?php echo $trade['title']?></option>
+                                <?php }?>
                             <?php }?>
                         </select>
-                        <?php }?>
                         <div class="clear"></div>
                     </div>
                     <div class="s2">
